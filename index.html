@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Career Computer Institute</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#FFF9F0;
+color:#222;
+overflow-x:hidden;
+}
+
+/* LOADER */
+
+#loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#0057D9;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+color:white;
+font-size:40px;
+font-weight:700;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:15px 8%;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+width:70px;
+}
+
+.logo h2{
+color:#0057D9;
+}
+
+.logo span{
+color:#FF8C00;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:25px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:#222;
+font-weight:500;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#0057D9;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+overflow:hidden;
+}
+
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+.hero-content{
+padding:20px;
+}
+
+.hero h1{
+font-size:65px;
+margin-bottom:20px;
+}
+
+.hero h1 span{
+color:#FF8C00;
+}
+
+.typing{
+font-size:28px;
+color:#FFD089;
+height:40px;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+padding:15px 35px;
+background:linear-gradient(45deg,#0057D9,#00A6FF);
+color:white;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:0.4s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* SECTION */
+
+section{
+padding:100px 8%;
+}
+
+.title{
+text-align:center;
+margin-bottom:60px;
+}
+
+.title h2{
+font-size:45px;
+color:#0057D9;
+}
+
+/* COUNTER */
+
+.counter{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+text-align:center;
+}
+
+.counter-box{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.4s;
+}
+
+.counter-box:hover{
+transform:translateY(-10px);
+}
+
+.counter-box h2{
+font-size:45px;
+color:#FF8C00;
+}
+
+/* COURSES */
+
+#courses{
+background:
+linear-gradient(rgba(0,87,217,0.9),rgba(0,27,75,0.9)),
+url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop');
+background-size:cover;
+background-attachment:fixed;
+}
+
+#courses .title h2{
+color:white;
+}
+
+.course-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.course-card{
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(10px);
+padding:35px;
+border-radius:22px;
+color:white;
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.course-card:hover{
+transform:translateY(-10px);
+background:white;
+color:#222;
+}
+
+.course-card h3{
+font-size:24px;
+margin-bottom:10px;
+}
+
+.course-price{
+font-size:30px;
+color:#FFD089;
+margin-bottom:15px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:20px;
+height:250px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+/* TEACHERS */
+
+.teacher-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.teacher-card{
+background:white;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.4s;
+}
+
+.teacher-card:hover{
+transform:translateY(-10px);
+}
+
+.teacher-card img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+}
+
+/* REVIEWS */
+
+.review-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.review-card{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+transition:0.4s;
+}
+
+.review-card:hover{
+transform:translateY(-10px);
+}
+
+/* CERTIFICATE */
+
+.certificate{
+background:#0057D9;
+color:white;
+text-align:center;
+}
+
+.cert-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.cert{
+background:rgba(255,255,255,0.1);
+padding:35px;
+border-radius:20px;
+}
+
+/* FOOTER */
+
+footer{
+background:#001B4B;
+color:white;
+padding:40px;
+text-align:center;
+}
+
+.socials{
+margin-top:20px;
+}
+
+.socials a{
+color:white;
+margin:0 10px;
+font-size:24px;
+text-decoration:none;
+}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;
+bottom:90px;
+right:20px;
+width:60px;
+height:60px;
+background:#25D366;
+color:white;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+text-decoration:none;
+z-index:999;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+position:fixed;
+bottom:0;
+width:100%;
+background:white;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+box-shadow:0 -2px 10px rgba(0,0,0,0.1);
+z-index:1000;
+}
+
+.mobile-menu a{
+text-decoration:none;
+color:#0057D9;
+font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.typing{
+font-size:20px;
+}
+
+.title h2{
+font-size:32px;
+}
+
+nav{
+padding:15px 5%;
+}
+
+nav ul{
+display:none;
+}
+
+.logo img{
+width:55px;
+}
+
+.hero{
+padding:20px;
+}
+
+.course-container,
+.gallery,
+.teacher-container,
+.review-container,
+.cert-box{
+grid-template-columns:1fr;
+}
+
+.mobile-menu{
+font-size:14px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+TECH CAREER
+</div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+<img src="123.jpg" alt="logo">
+<h2>TECH <span>CAREER</span></h2>
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#courses">Courses</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#reviews">Reviews</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<video autoplay muted loop playsinline>
+<source src="https://cdn.coverr.co/videos/coverr-students-working-on-computers-1561234601917?download=1080p" type="video/mp4">
+</video>
+
+<div class="hero-content">
+
+<h1>Build Your <span>Future</span><br>With Tech Career</h1>
+
+<div class="typing" id="typing"></div>
+
+<a href="#courses" class="btn">Explore Courses</a>
+
+</div>
+
+</section>
+
+<!-- COUNTER -->
+
+<section>
+
+<div class="counter">
+
+<div class="counter-box">
+<h2>500+</h2>
+<p>Students</p>
+</div>
+
+<div class="counter-box">
+<h2>50+</h2>
+<p>Courses</p>
+</div>
+
+<div class="counter-box">
+<h2>100%</h2>
+<p>Practical Training</p>
+</div>
+
+<div class="counter-box">
+<h2>10+</h2>
+<p>Expert Trainers</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- COURSES -->
+
+<section id="courses">
+
+<div class="title">
+<h2>Our Courses</h2>
+</div>
+
+<div class="course-container">
+
+<div class="course-card">
+<h3>💻 PGDCA</h3>
+<div class="course-price">₹15,000</div>
+<p>Advanced Computer Diploma Course.</p>
+</div>
+
+<div class="course-card">
+<h3>📚 DCA</h3>
+<div class="course-price">₹8,000</div>
+<p>Computer Basics & Office Skills.</p>
+</div>
+
+<div class="course-card">
+<h3>📊 Data Analytics</h3>
+<div class="course-price">₹20,000</div>
+<p>Power BI, Excel & Data Visualization.</p>
+</div>
+
+<div class="course-card">
+<h3>🎨 Graphic Designing</h3>
+<div class="course-price">₹14,000</div>
+<p>Photoshop, Canva & Illustrator.</p>
+</div>
+
+<div class="course-card">
+<h3>🎬 Video Editing</h3>
+<div class="course-price">₹13,000</div>
+<p>Premiere Pro & CapCut Training.</p>
+</div>
+
+<div class="course-card">
+<h3>📈 Digital Marketing</h3>
+<div class="course-price">₹18,000</div>
+<p>SEO, Social Media & Ads.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<div class="title">
+<h2>Institute Gallery</h2>
+</div>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+<img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644">
+
+</div>
+
+</section>
+
+<!-- TEACHERS -->
+
+<section>
+
+<div class="title">
+<h2>Our Trainers</h2>
+</div>
+
+<div class="teacher-container">
+
+<div class="teacher-card">
+<img src="1234.jpg">
+<h3>Fizza allam</h3>
+<p>Graphic Design Trainer</p>
+</div>
+
+</section>
+
+<!-- CERTIFICATE -->
+
+<section class="certificate">
+
+<div class="title">
+<h2 style="color:white;">Certificates & Achievements</h2>
+</div>
+
+<div class="cert-box">
+
+<div class="cert">
+<h3>🏆 ISO Certified</h3>
+</div>
+
+<div class="cert">
+<h3>📜 Govt Registered</h3>
+</div>
+
+<div class="cert">
+<h3>💼 Placement Assistance</h3>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>TECH CAREER COMPUTER INSTITUTE</h2>
+
+<div class="socials">
+
+<a href="#">📘</a>
+<a href="#">📷</a>
+<a href="#">▶️</a>
+<a href="#">💬</a>
+
+</div>
+
+<p style="margin-top:20px;">
+© 2026 Tech Career | All Rights Reserved
+</p>
+
+</footer>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/917649030241" class="whatsapp">
+💬
+</a>
+
+<script>
+
+/* LOADER */
+
+window.onload=function(){
+document.getElementById("loader").style.display="none";
+}
+
+/* TYPING EFFECT */
+
+const text = [
+"Learn Coding 💻",
+"Learn Designing 🎨",
+"Learn Marketing 📈",
+"Build Your Career 🚀"
+];
+
+let count = 0;
+let index = 0;
+let currentText = '';
+let letter = '';
+
+(function type(){
+
+if(count === text.length){
+count = 0;
+}
+
+currentText = text[count];
+letter = currentText.slice(0, ++index);
+
+document.getElementById('typing').textContent = letter;
+
+if(letter.length === currentText.length){
+count++;
+index = 0;
+setTimeout(type,1000);
+}else{
+setTimeout(type,100);
+}
+
+})();
+
+</script>
+
+</body>
+</html>
